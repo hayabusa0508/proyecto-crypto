@@ -7,7 +7,9 @@ res= requests.get(url)
 if res.status_code == 200:
     datos = res.json()
     #Extraccion de la seccion del monedas seleccionadas a JSON
-    print(f"El precio de Ethereum en dolares es: {datos['ethereum']['usd']}") 
+    moneda = input("¿Qué criptomoneda quieres consultar? (bitcoin/ethereum/cardano): ").lower()
+    #agreamos que el usuario pueda escoger la moneda de su interes
+    print(f"El precio de {moneda} en dolares es: {datos[moneda]['usd']}") 
      #4. impresion de los datos necesarios en consola
 else:
     print("Error al conectar:", res.status_code)
