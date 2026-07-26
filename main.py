@@ -9,7 +9,14 @@ if res.status_code == 200:
     #Extraccion de la seccion del monedas seleccionadas a JSON
     moneda = input("¿Qué criptomoneda quieres consultar? (bitcoin/ethereum/cardano): ").lower()
     #agreamos que el usuario pueda escoger la moneda de su interes
-    print(f"El precio de {moneda} en dolares es: {datos[moneda]['usd']}") 
+    divisa = input("¿En qué divisa lo quieres ver? (usd/mxn): ").lower()
+    if moneda in datos:
+        #con este if hacemos que no haya error por escribir algo fuera del rango
      #4. impresion de los datos necesarios en consola
+        if divisa in datos[moneda]:
+            print(f"El precio de {moneda} en {divisa.upper()} es: {datos[moneda][divisa]}")
+    else:
+        print("Erro al escribir, vuelve a intentarlo")
+        #en caso de escribir mal saldra este mensaje
 else:
     print("Error al conectar:", res.status_code)
